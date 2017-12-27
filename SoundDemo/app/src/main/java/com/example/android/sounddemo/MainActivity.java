@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     MediaPlayer mplayer;
@@ -43,6 +46,33 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Seekbar changed", Integer.toString(i));
 
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        final SeekBar scrubber = (SeekBar) findViewById(R.id.seekBar2);
+        scrubber.setMax(mplayer.getDuration());
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                scrubber.setProgress(mplayer.getCurrentPosition());
+            }
+        }, 0, 100);
+
+        scrubber.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                mplayer.seekTo(i);
             }
 
             @Override
