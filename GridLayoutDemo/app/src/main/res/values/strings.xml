@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Grid Layout Demo</string>
+    <string name="hello">Hello</string>
+    <string name="goodevening">Good Evening</string>
+    <string name="doyouspeakenglish">Do you speak English?</string>
+    <string name="howareyou">How are you?</string>
+    <string name="ilivein">I live in</string>
+    <string name="mynameis">My name is</string>
+    <string name="please">Please</string>
+    <string name="welcome">Welcome</string>
+</resources>
